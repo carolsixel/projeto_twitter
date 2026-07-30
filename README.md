@@ -40,10 +40,14 @@ Esse é um projeto de conclusão do Cusro EBAC - Fulltack Python. Foi desenvolvi
 
 1. **Clone o repositório:**
 
+```bash
    git clone https://github.com/carolsixel/projeto_twitter.git
    cd projeto_twitter
+```
 
 2. **Crie e ative um ambiente virtual (venv):**
+
+```bash
 python -m venv venv
 
 # Linux / Mac
@@ -52,17 +56,31 @@ source venv/bin/activate
 # Windows
 .\venv\Scripts\activate
 
+```
+
 3. **Instale as dependências:**
+
+```bash
 pip install -r requirements.txt
+```
 
 4. **Realize as migrações do Banco de Dados:**
+
+```bash
 python manage.py migrate
+```
 
 5. **Crie um usuário administrador (Superusuario):**
+
+```bash
 python manage.py createsuperuser
+```
 
 6. **Inicie o servidor de desenvolvimento:**
+
+```bash
 python manage.py runserver
+```
 
 7. **Acesse a aplicação em:**
  http://127.0.0.1:8000/

@@ -1,6 +1,8 @@
 #  Projeto Final EBAC - Twitter
 
-Esse é um projeto de conclusão do Cusro EBAC - Fulltack Python. Foi desenvolvido um clone do Twitter utilizando o framework Django. A aplicação conta com um sistema completo de interação, suporte a mídias e uma interface que pode ser alterada para Modo Escuro.
+Esse é um projeto de conclusão do Cusro EBAC - FullStack Python. 
+
+Foi desenvolvido um clone do Twitter utilizando o framework Django. A aplicação conta com um sistema completo de interação, suporte a mídias e uma interface que pode ser alterada para Modo Escuro.
 
 ## Funcionalidades:
 
@@ -70,13 +72,13 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-5. **Crie um usuário administrador (Superusuario):**
+5. **Crie um Usuário Administrador (Superususer):**
 
 ```bash
 python manage.py createsuperuser
 ```
 
-6. **Inicie o servidor de desenvolvimento:**
+6. **Inicie o servidor:**
 
 ```bash
 python manage.py runserver

@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-nlti2wulej*4pa89bde(toqtj$gh$p=@mdw^gd+do1mn)=q%0e
 DEBUG = True # Pode manter True para ver erros caso o deploy falhe, depois mude para False
 
 # LIBERANDO O SITE PARA O RENDER
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'carolsixel.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -85,8 +85,8 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join (BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

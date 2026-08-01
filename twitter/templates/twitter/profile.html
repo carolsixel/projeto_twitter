@@ -3,7 +3,7 @@
 {% block content %}
 <div class="min-h-screen bg-white dark:bg-gray-900">
     <div class="flex items-center space-x-4 p-3 sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-10 border-b dark:border-gray-800">
-        <a href="{% url 'home' %}" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition text-black dark:text-white">⬅️</a>
+        <a href="{% url 'home' %}" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition text-black dark:text-white"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /></svg></a>
         <div><h2 class="text-xl font-bold dark:text-white">{{ view_user.username }}</h2><span class="text-gray-500 text-sm">{{ posts.count }} Posts</span></div>
     </div>
 
@@ -34,7 +34,7 @@
     <div class="divide-y dark:divide-gray-800 border-t dark:border-gray-800">
         {% for post in posts %}
         <div class="p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
-            {% if post.repost_of %}<div class="flex items-center space-x-2 text-gray-500 text-sm font-bold mb-2 ml-10"><span>🔄</span><span>{{ view_user.username }} retuitou</span></div>{% endif %}
+            {% if post.repost_of %}<div class="flex items-center space-x-2 text-gray-500 text-sm font-bold mb-2 ml-10"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path fill-rule="evenodd" d="M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 0 1 3.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 1 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 0 0-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 0 0-4.392-4.392 49.422 49.422 0 0 0-7.436 0A4.756 4.756 0 0 0 3.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 1 0 1.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 0 1 3.01-3.01c1.19-.09 2.392-.135 3.605-.135Zm-6.97 6.22a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 0 0 4.392 4.392 49.413 49.413 0 0 0 7.436 0 4.756 4.756 0 0 0 4.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 0 0-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 0 1-3.01 3.01 47.953 47.953 0 0 1-7.21 0 3.256 3.256 0 0 1-3.01-3.01 47.759 47.759 0 0 1-.1-1.759L6.97 15.53a.75.75 0 0 0 1.06-1.06l-3-3Z" clip-rule="evenodd" /></svg></span><span>{{ view_user.username }} retuitou</span></div>{% endif %}
 
             <div class="flex space-x-3">
                 {% with original_post=post.repost_of|default:post %}
@@ -42,7 +42,7 @@
                 <div class="flex-1">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2"><span class="font-bold dark:text-white">{{ original_post.author.username }}</span><span class="text-gray-500 text-sm">@{{ original_post.author.username }} · {{ original_post.created_at|timesince }}</span></div>
-                        {% if post.author == request.user %}<a href="{% url 'delete_post' post.id %}" onclick="return confirm('Excluir?')" class="text-gray-400 hover:text-red-500 transition">🗑️</a>{% endif %}
+                        {% if post.author == request.user %}<a href="{% url 'delete_post' post.id %}" onclick="return confirm('Excluir?')" class="text-gray-400 hover:text-red-500 transition"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd" /></svg></a>{% endif %}
                     </div>
                     <p class="mt-1 dark:text-gray-200">{{ original_post.content }}</p>
                     {% if original_post.image %}<img src="{{ original_post.image.url }}" class="mt-3 rounded-2xl w-full border dark:border-gray-800">{% endif %}
@@ -50,16 +50,16 @@
 
                     <!-- Actions-->
                     <div class="flex mt-4 justify-between max-w-md text-gray-500">
-                        <button onclick="toggleCommentSection('{{ post.id }}')" class="flex items-center space-x-2 outline-none"><span>💬</span> <span class="text-sm">{{ original_post.comments.count }}</span></button>
+                        <button onclick="toggleCommentSection('{{ post.id }}')" class="flex items-center space-x-2 outline-none"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path fill-rule="evenodd" d="M12 2.25c-2.429 0-4.817.178-7.152.521C2.87 3.061 1.5 4.795 1.5 6.741v6.018c0 1.946 1.37 3.68 3.348 3.97.877.129 1.761.234 2.652.316V21a.75.75 0 0 0 1.28.53l4.184-4.183a.39.39 0 0 1 .266-.112c2.006-.05 3.982-.22 5.922-.506 1.978-.29 3.348-2.023 3.348-3.97V6.741c0-1.947-1.37-3.68-3.348-3.97A49.145 49.145 0 0 0 12 2.25ZM8.25 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Zm2.625 1.125a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" /></svg></span> <span class="text-sm">{{ original_post.comments.count }}</span></button>
                         
                         <!-- Retweet Button -->
                         <button onclick="retweetPost(this, '{{ original_post.id }}')" class="flex items-center space-x-2 outline-none">
-                            <span class="rt-icon {% if post.repost_of %}text-green-500{% endif %}">🔄</span>
+                            <span class="rt-icon {% if post.repost_of %}text-green-500{% endif %}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path fill-rule="evenodd" d="M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 0 1 3.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 1 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 0 0-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 0 0-4.392-4.392 49.422 49.422 0 0 0-7.436 0A4.756 4.756 0 0 0 3.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 1 0 1.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 0 1 3.01-3.01c1.19-.09 2.392-.135 3.605-.135Zm-6.97 6.22a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 0 0 4.392 4.392 49.413 49.413 0 0 0 7.436 0 4.756 4.756 0 0 0 4.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 0 0-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 0 1-3.01 3.01 47.953 47.953 0 0 1-7.21 0 3.256 3.256 0 0 1-3.01-3.01 47.759 47.759 0 0 1-.1-1.759L6.97 15.53a.75.75 0 0 0 1.06-1.06l-3-3Z" clip-rule="evenodd" /></svg></span>
                             <span class="text-sm rt-count {% if post.repost_of %}text-green-500{% endif %}">{{ original_post.reposts.count }}</span>
                         </button>
 
                         <button onclick="likePost(this, '{{ original_post.id }}')" class="flex items-center space-x-2 outline-none">
-                            <span class="heart-icon">{% if request.user in original_post.likes.all %}<span class="text-red-500">❤️</span>{% else %}<span>🤍</span>{% endif %}</span>
+                            <span class="heart-icon">{% if request.user in original_post.likes.all %}<span class="text-red-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" /></svg></span>{% else %}<span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg></span>{% endif %}</span>
                             <span class="text-sm like-count {% if request.user in original_post.likes.all %}text-red-500{% endif %}">{{ original_post.likes.count }}</span>
                         </button>
                     </div>
@@ -83,8 +83,8 @@
             const data = await response.json();
             const heartSpan = btn.querySelector('.heart-icon');
             const countSpan = btn.querySelector('.like-count');
-            if (data.liked) { heartSpan.innerHTML = '<span class="text-red-500">❤️</span>'; countSpan.classList.add('text-red-500'); }
-            else { heartSpan.innerHTML = '<span>🤍</span>'; countSpan.classList.remove('text-red-500'); }
+            if (data.liked) { heartSpan.innerHTML = '<span class="text-red-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" /></svg></span>'; countSpan.classList.add('text-red-500'); }
+            else { heartSpan.innerHTML = '<span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg></span>'; countSpan.classList.remove('text-red-500'); }
             countSpan.innerText = data.count;
         }
     }
